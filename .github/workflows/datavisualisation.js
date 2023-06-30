@@ -3,6 +3,11 @@ import { Line, Bar } from 'react-chartjs-2';
 import { ContractKit } from '@celo/contractkit';
 import Web3 from 'web3';
 
+// Update the following values with your Celo blockchain details
+const rpcEndpoint = 'https://alfajores-forno.celo-testnet.org';
+const contractAddress = '0xYourContractAddress';
+const abi = []; // Update with your contract's ABI
+
 function App() {
   const [transactionVolumeData, setTransactionVolumeData] = useState({});
   const [blockConfirmationTimeData, setBlockConfirmationTimeData] = useState({});
@@ -14,7 +19,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const web3 = new Web3('https://alfajores-forno.celo-testnet.org');
+      const web3 = new Web3(rpcEndpoint);
       const kit = ContractKit.newKitFromWeb3(web3);
 
       // Fetching transaction volume data
@@ -50,7 +55,7 @@ function App() {
       datasets: [
         {
           label: 'Transaction Volume',
-          data: [1000, 2000, 3000], // Swaping with your processed data
+          data: [1000, 2000, 3000], // Swapping with your processed data
           backgroundColor: 'rgba(75,192,192,0.4)',
           borderColor: 'rgba(75,192,192,1)',
           borderWidth: 2,
@@ -130,4 +135,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
